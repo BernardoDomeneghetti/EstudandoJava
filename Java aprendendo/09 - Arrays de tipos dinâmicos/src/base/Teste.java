@@ -1,6 +1,11 @@
 package base;
 
+import arrays_09.ArraysContas;
+
 public class Teste {
-// Conta conta = new ContaPoupanca(3,"Eu",1234); <-- Cast implicito (DA CERTO)
-	ContaPoupanca conta = new ContaPoupanca(3,"Eu",1234);
+	public static void main(String[] args) {
+		ArraysContas arrCs = new ArraysContas();
+		arrCs.AddContaCorrente(new ContaCorrente(1000, "Bernardo", 1, 1000));
+		arrCs.printaContas();
+	}
 }

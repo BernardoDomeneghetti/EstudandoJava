@@ -4,6 +4,12 @@ public abstract class Conta {
 	private float saldo;
 	private String cliente;
 	private int numeroConta;
+	
+	public abstract String toString();
+	
+	public Conta(){
+		super();
+	}
 		
 	public Conta(float saldo, String cliente, int numeroConta) {
 		super();
