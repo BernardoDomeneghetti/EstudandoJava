@@ -18,6 +18,7 @@ public class IntroducaoGenerics {
 
 	public void setLsContas(ArrayList<Conta> lsContas) {
 		this.lsContas = lsContas;
+		
 	}
 	
 	
