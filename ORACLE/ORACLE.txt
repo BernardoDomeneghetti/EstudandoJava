@@ -1,0 +1,36 @@
+Planos de execução são gerados através do próprio gerenciador de banco de dados (ORACLE)
+
+Nas tabelas administrativas do oracle são gravadas as estatísticas usadas pelo optimizador interno na decisão de qual plano de execução realizar no momento da consulta
+
+DBA_TABLES: [SELECT * FROM DBA_TABLES;]
+
+	Grava informações de cada tabela do banco de dados, como por exemplo:
+
+	- Número de linhas
+	- Número de colunas 
+	- Número de blocos utilizados e o espaço livre de cada blocos
+		-> A nomenclatura de blocos é proveniente da estrutra de arvore B, onde os dados são separados em blocos, e os mesmos são organizados em estrutra de arvore.
+	- Número de encadeamento de linhas por bloco, ou seja, a maneira como os dados estão organizados em disco.
+
+
+DBA_TAB_COLUMNS: [SELECT * FROM DBA_TAB_COLUMNS;]
+	Grava informações de cada coluna de cada tabela do banco de dados, como por exemplo:
+	
+	- Número de valores distintos
+		-> Por exemlo: Em uma determinada tabela: "Produtos_Estoque" existem 10 registros, porém na coluna "Quantidade", existem 4 registros com o valor 1, 3 registros com o valor 3, e 3 registros com o valor 2, portanto, nessa coluna existem 3 valores distintos.
+	- Valores mais altos e mais baixos
+	- Número de valores nulos
+	- O Comprimento médio da coluna
+		-> Média do lenght dos valores presentes na coluna.
+		
+DBA_INDEX: [SELECT * FROM DBA_INDEX;]
+
+	Grava as informações de cada indice de cada tabela, como por exemplo:
+	
+	- A profundidade da arvore de índices
+	- O número de valores-chaves distintos 
+	- O o fator de agrupamento 
+	
+O optmizador do oralce baseia as decisões de plano de execução a ser realizado em amostras de dados retirados de tabelas, e atrabvés dessas amostras, produz estatísticas capazes de apontar, qual o melhor plano de execução.
+Porém, de acordo com a configuração do banco de dados, o mesmo pode estar desatualizado ou errado, nesse caso, a decisão do optmizador, pode ser errada. Quando o optimizador erra a decisão do plano de execução, ele nota a diferença da projeção e da execução, e dessa forma, cria uma diretiva para execução de consulta na tabela, através.
+	
