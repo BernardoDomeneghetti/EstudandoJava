@@ -24,30 +24,29 @@ public class FileEditor {
 		BufferedReader br = new BufferedReader(r);
 				
 		String userEntrance = br.readLine();		
-		String resultText = userEntrance;
+		String resultText = "";
 		
 		while (userEntrance != null && !userEntrance.isEmpty()) {
+			resultText = resultText + "\n" + userEntrance;			
 			userEntrance = br.readLine();
-			resultText = userEntrance;
 		}
-		
-		return resultText;
-		
+		br.close();
+		return resultText;		
 	}
 	
-	public String getFileEntranceString(String fileAddress) throws IOException {
+	public String getFileEntranceString(String fileAddress) throws IOException {	
 		InputStream is = new FileInputStream(fileAddress);		
 		Reader r = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(r);
-				
-		String userEntrance = br.readLine();		
-		String resultText = userEntrance;
-		
-		while (userEntrance != null && !userEntrance.isEmpty()) {
-			userEntrance = br.readLine();
-			resultText = userEntrance;
+		try (BufferedReader br = new BufferedReader(r)) {
+			String fileEntrance = br.readLine();		
+			String resultText = fileEntrance;
+			
+			while (fileEntrance != null && !fileEntrance.isEmpty()) {
+				fileEntrance = br.readLine();
+				resultText = fileEntrance;
+			}		
+			return resultText;
 		}		
-		return resultText;		
 	}
 	
 	public void writeLineInExistingFile(String fileName, String text) throws IOException {
@@ -59,17 +58,7 @@ public class FileEditor {
 				
 		bw.close();
 	}
-	
-	public void writeTextInExistingFile(String fileName, String text) throws IOException {
-		OutputStream fos = new FileOutputStream(fileName);
-		Writer osw = new OutputStreamWriter(fos);
-		BufferedWriter bw = new BufferedWriter(osw);
-				
-//		while ()				
-//		bw.write(text);
-//				
-//		bw.close();
-	}
+
 	
 
 }
