@@ -2,7 +2,7 @@ package runing;
 
 import java.io.IOException;
 
-import base.java_io.FileEditor;
+import base.java_io.TextFileEditor;
 import config.ApplicationGUI;
 
 public class Testing {
@@ -13,13 +13,13 @@ public class Testing {
 		ApplicationGUI.out("|___________________________________________________________________|");
 		
 		ApplicationGUI.out("Insert the text you want to grave in the text file:");
-		String userEntrance = FileEditor.newFE().getUserEntranceString();
+		String userEntrance = TextFileEditor.newFE().getConsoleEntranceString();
 		
 		ApplicationGUI.out("The file is gonna be writen with:");
 		ApplicationGUI.out(userEntrance);
 			
 		try {
-			FileEditor.newFE().writeLineInExistingFile("ArquivoDeTeste", userEntrance);
+			TextFileEditor.newFE().writeLineInExistingFile("ArquivoDeTeste", userEntrance);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -12,13 +12,13 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 
-public class FileEditor {
+public class TextFileEditor {
 	
-	public static FileEditor newFE() {
-		return new FileEditor();
+	public static TextFileEditor newFE() {
+		return new TextFileEditor();
 	}
 	
-	public String getUserEntranceString() throws IOException {
+	public String getConsoleEntranceString() throws IOException {
 		InputStream is = System.in;		
 		Reader r = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(r);
